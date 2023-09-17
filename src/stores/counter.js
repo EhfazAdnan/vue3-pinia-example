@@ -7,4 +7,12 @@ export const useCounterStore = defineStore('counter',{
   getters: {
     countDigitLength: (state) => state.count.toString().length,
   },
+  actions: {
+    increment(){
+      this.count++;
+    },
+    decrement(){
+      this.count--;
+    }
+  }
 });
