@@ -4,13 +4,13 @@
   import {storeToRefs} from "pinia";
 
   const authStore = useAuthStore();
-  const { isAuthenticated, user } = storeToRefs(authStore);
+  const { isAuthenticated, user, fullname } = storeToRefs(authStore);
 </script>
 
 <template>
   <main>
     <div v-if="isAuthenticated">
-      User name is: {{user.name}}
+      User name is: {{fullname}}
     </div>
     <Counter />
   </main>
