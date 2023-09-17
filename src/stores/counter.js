@@ -1,5 +1,6 @@
-import { ref, computed } from 'vue'
 import { defineStore } from 'pinia';
+import { useAuthStore } from "@/stores/auth";
+
 export const useCounterStore = defineStore('counter',{
   state: () => ({
     count: 0,
@@ -9,10 +10,16 @@ export const useCounterStore = defineStore('counter',{
   },
   actions: {
     increment(){
+      if(!this.isAuthenticated()) return;
       this.count++;
     },
     decrement(){
+      if(!this.isAuthenticated()) return;
       this.count--;
+    },
+    isAuthenticated(){
+      const authStore = useAuthStore();
+      return authStore.isAuthenticated;
     }
   }
 });
